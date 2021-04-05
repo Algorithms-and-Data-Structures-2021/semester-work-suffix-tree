@@ -1,4 +1,4 @@
-# Название семестровой работы
+Suffix Tree
 
 [![CMake](https://github.com/Algorithms-and-Data-Structures-2021/semester-work-template/actions/workflows/cmake.yml/badge.svg)](https://github.com/Algorithms-and-Data-Structures-2021/semester-work-template/actions/workflows/cmake.yml)
 
@@ -8,7 +8,7 @@
 
 _Краткое описание семестрового проекта. Следует отразить информацию по следующим пунктам:_
 
-- _Какая структура данных реализуется?_
+- _Какая структура данных реализуется?_ 
 - _Что она из себя представляет (сбалансированное дерево, линейный список и пр.)?_
 - _Где и как она используется (приложения)?_
 - _Какие операции над ней можно выполнять (поиск, удаление, добавление, вставка и пр.)?_
