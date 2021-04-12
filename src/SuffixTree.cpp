@@ -1,4 +1,4 @@
-#include "data_structure.hpp"
+#include "SuffixTree.hpp"
 
 // файл с определениями
 
