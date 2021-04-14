@@ -5,7 +5,7 @@
 using namespace std;
 
 namespace itis {
-  struct node {
+  struct Node {
     int start, end, slink;
     int next[ALPHABET_SIZE];
 

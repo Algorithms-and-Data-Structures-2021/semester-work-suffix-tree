@@ -11,11 +11,11 @@ namespace itis {
    public:
 
       int root, last_added, pos, needSL, remainder, active_node, active_e, active_len;
-      node tree[2*MAXN];
+      Node tree[2*MAXN];
       char text[MAXN];
 
       int new_node(int start, int end = oo) {
-        node nd;
+        Node nd;
         nd.start = start;
         nd.end = end;
         nd.slink = 0;
@@ -74,7 +74,7 @@ namespace itis {
             tree[split].next[c] = leaf;
             tree[nxt].start += active_len;
             tree[split].next[text[tree[nxt].start]] = nxt;
-            add_SL(split); //rule 2
+            add_SL(split);
           }
           remainder--;
           if (active_node == root && active_len > 0) {
@@ -84,5 +84,55 @@ namespace itis {
             active_node = tree[active_node].slink > 0 ? tree[active_node].slink : root;
         }
       }
+
+    // ===== SEARCHING FOR SUBSTRING FUNCTIONS ===== //
+
+    int traverseEdge(string str, int idx, int start, int end)
+    {
+      int k = 0;
+      //Traverse the edge with character by character matching
+      for(k=start; k<=end && str[idx] != '\0'; k++, idx++)
+      {
+        if(text[k] != str[idx])
+          return -1;  // no match
+      }
+      if(str[idx] == '\0')
+        return 1;  // match
+      return 0;  // more characters yet to match
+    }
+
+    int doTraversal(Node*n, string str, int idx)
+    {
+      if(n == NULL)
+      {
+        return -1; // no match
+      }
+      int res = -1;
+      //If Node n is not root Node, then traverse edge
+      //from Node n's parent to Node n.
+      if(n->start != -1)
+      {
+        res = traverseEdge(str, idx, n->start, n->end);
+        if(res != 0)
+          return res;  // match (res = 1) or no match (res = -1)
+      }
+      //Get the character index to search
+      idx = idx + n->end - n->start;
+      //If there is an edge from Node n going out
+      //with current character str[idx], traverse that edge
+      if(n->next[str[idx]] != 0)
+        return doTraversal(&tree[n->next[str[idx]]], str, idx);
+      else
+        return -1;  // no match
+    }
+
+    void checkForSubString(string str)
+    {
+      int res = doTraversal(&tree[root], str, 0);
+      if(res == 1)
+        printf("Pattern <%s> is a Substring\n", str.c_str());
+      else
+        printf("Pattern <%s> is NOT a Substring\n", str.c_str());
+    }
   }; // SuffixTree
 }  // namespace itis

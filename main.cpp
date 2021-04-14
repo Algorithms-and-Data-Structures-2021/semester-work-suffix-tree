@@ -8,14 +8,15 @@ using namespace itis;
 int main() {
   SuffixTree* tree = new SuffixTree;
   tree->st_init();
-  string texts;
+  string texts = "abcabxabcd";
 
-  cin >> texts;
+  // cin >> texts;
   for (auto i : texts) {
     tree->st_extend(i);
     cout << tree->active_node;
   }
 
+  tree->checkForSubString("bx");
   delete tree;
   return 0;
 }
