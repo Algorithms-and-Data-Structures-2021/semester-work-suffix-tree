@@ -1,6 +1,5 @@
 #include <iostream>
 #include "SuffixTree.hpp"
-#include <string>
 
 using namespace std;
 using namespace itis;
@@ -8,15 +7,15 @@ using namespace itis;
 int main() {
   SuffixTree* tree = new SuffixTree;
   tree->st_init();
-  string texts = "abcabxabcd";
+  string texts = "procedure";
 
   // cin >> texts;
   for (auto i : texts) {
     tree->st_extend(i);
-    cout << tree->active_node;
   }
 
-  tree->checkForSubString("bx");
+
+  tree->checkForSubString("durex");
   delete tree;
   return 0;
 }
