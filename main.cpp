@@ -15,7 +15,7 @@ int main() {
   }
 
 
-  tree->checkForSubString("durex");
+  tree->checkForSubString("proce");
   delete tree;
   return 0;
 }

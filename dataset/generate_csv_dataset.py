@@ -1,39 +1,52 @@
-import argparse
+# import argparse
+import csv
+from faker import Faker
 
-DEFAULT_DESCRIPTION = 'CSV dataset generator script demo.'
-DEFAULT_SAMPLES = 100
+amount_samples = [100, 500, 1000, 5000, 10000, 25000, 50000, 100000, 250000, 500000, 750000, 1000000, 2500000, 5000000]
+folders = ['tree_creation/data_1/',
+           'tree_creation/data_2/',
+           'tree_creation/data_3/',
+           'tree_creation/data_4/', 'tree_creation/data_5/', 'tree_creation/data_6/',
+           'tree_creation/data_7/', 'tree_creation/data_8/', 'tree_creation/data_9/',
+           'tree_creation/data_10/']
+files = ['100.csv', '500.csv', '1000.csv', '5000.csv', '10000csv', '25000.csv', '50000.csv', '100000csv', '250000.csv',
+         '500000.csv', '750000.csv', '1000000.csv', '2500000.csv', '5000000.csv']
+# DEFAULT_DESCRIPTION = 'CSV dataset generator script demo.'
+# DEFAULT_SAMPLES = 100
 
-
-def parse_args():
-    """
-    Парсинг аргументов командной строки (CLI).
-    :return интерфейс для работы с аргументами.
-
-    Больше информации на https://docs.python.org/3.7/howto/argparse.html
-    """
-    parser = argparse.ArgumentParser(description=DEFAULT_DESCRIPTION)
-
-    parser.add_argument('output',
-                        type=str,
-                        help='output CSV file, e.g. data/output.csv')
-
-    parser.add_argument('--samples',
-                        type=int,
-                        default=DEFAULT_SAMPLES,
-                        help='number of samples to generate (default: {})'.format(DEFAULT_SAMPLES))
-
-    return parser.parse_args()
+#
+# def parse_args():
+#     parser = argparse.ArgumentParser(description=DEFAULT_DESCRIPTION)
+#
+#     parser.add_argument('output',
+#                         type=str,
+#                         help='output CSV file, e.g. data/output.csv')
+#
+#     parser.add_argument('--samples',
+#                         type=int,
+#                         default=DEFAULT_SAMPLES,
+#                         help='number of samples to generate (default: {})'.format(DEFAULT_SAMPLES))
+#
+#     return parser.parse_args()
 
 
 if __name__ == '__main__':
-    args = parse_args()
+    fake = Faker()
+    # args = parse_args()
+    #
+    # if args.samples < 0:
+    #     raise ValueError('Number of samples must be greater than 0.')
+    #
+    # with open(args.output, 'w') as csvfile:
+    #     spamwriter = csv.writer(csvfile, delimiter=' ',
+    #                             quotechar='|', quoting=csv.QUOTE_MINIMAL)
+    #
+    #     for i in range(args.samples - 1):
+    #         spamwriter.writerow(fake.pystr())
 
-    # валидация аргументов
-    if args.samples < 0:
-        raise ValueError('Number of samples must be greater than 0.')
-
-    # запись данных в файл
-    with open(args.output, 'w') as file:
-        for i in range(args.samples - 1):
-            file.write('{},'.format(i))
-        file.write(str(args.samples - 1))
+    for folder in folders:
+        for file, j in zip(files, amount_samples):
+            with open(folder + file, 'w', newline='') as csvfile:
+                spamwriter = csv.writer(csvfile, delimiter=' ',
+                                        quotechar='|', quoting=csv.QUOTE_MINIMAL)
+                spamwriter.writerow([fake.pystr(max_chars=j)])
