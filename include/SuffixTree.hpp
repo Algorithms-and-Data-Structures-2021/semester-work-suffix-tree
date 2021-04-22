@@ -9,7 +9,12 @@ using namespace std;
 namespace itis {
   struct SuffixTree{
    public:
-      int root, last_added, pos, needSL, remainder, active_node, active_e, active_len;
+      int root, last_added,
+          pos, // position at text
+          needSL, // current node that needs suffix link
+          remainder, // how many nodes we need to lengthen
+          active_node, active_e, active_len;
+
       Node* tree = new Node[MAXN];
       char* text = new char[MAXN];
 
@@ -28,11 +33,13 @@ namespace itis {
         return text[active_e];
       }
 
+      // only adds SL if called on node in the same iteration of WHILE
       void add_SL(int node) {
         if (needSL > 0) tree[needSL].slink = node;
         needSL = node;
       }
 
+      // going down on the edge to the node
       bool walk_down(int node) {
         if (active_len >= tree[node].edge_length(pos)) {
           active_e += tree[node].edge_length(pos);
@@ -49,24 +56,30 @@ namespace itis {
         root = active_node = new_node(-1, -1);
       }
 
+      // adding new letter to text and expand our tree
       void st_extend(char c) {
         text[++pos] = c;
         needSL = 0;
         remainder++;
+
+        // while we have nodes to extend (to split)
         while(remainder > 0) {
           if (active_len == 0) active_e = pos;
-          if (tree[active_node].next[active_edge()] == 0) {
+
+          if (tree[active_node].next[active_edge()] == 0) { // if there is no such edge
             int leaf = new_node(pos);
             tree[active_node].next[active_edge()] = leaf;
             add_SL(active_node);
           } else {
             int nxt = tree[active_node].next[active_edge()];
-            if (walk_down(nxt)) continue;
+            if (walk_down(nxt)) continue; // if we have edge starting with current symbol
             if (text[tree[nxt].start + active_len] == c) {
               active_len++;
               add_SL(active_node);
               break;
             }
+
+            // if we have C somewhere in the middle of the edge we need to split it into two edges
             int split = new_node(tree[nxt].start, tree[nxt].start + active_len);
             tree[active_node].next[active_edge()] = split;
             int leaf = new_node(pos);
@@ -75,6 +88,7 @@ namespace itis {
             tree[split].next[text[tree[nxt].start]] = nxt;
             add_SL(split);
           }
+          // it's all just a rules from here. trust me.
           remainder--;
           if (active_node == root && active_len > 0) {
             active_len--;
@@ -83,6 +97,7 @@ namespace itis {
             active_node = tree[active_node].slink > 0 ? tree[active_node].slink : root;
         }
       }
+
    ~SuffixTree(){
      delete[] tree;
      delete[] text;
@@ -93,7 +108,6 @@ namespace itis {
     int traverseEdge(string str, int idx, int start, int end)
     {
       int k = 0;
-      //I
       for(k=start; k<end && str[idx] != '\0'; k++, idx++)
       {
         if(text[k] != str[idx])

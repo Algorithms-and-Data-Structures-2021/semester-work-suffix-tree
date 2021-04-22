@@ -1,4 +1,3 @@
-# import argparse
 import csv
 from faker import Faker
 
@@ -10,39 +9,11 @@ folders = ['tree_creation/data_1/',
            'tree_creation/data_7/', 'tree_creation/data_8/', 'tree_creation/data_9/',
            'tree_creation/data_10/']
 files = ['100.csv', '500.csv', '1000.csv', '5000.csv', '10000csv', '25000.csv', '50000.csv', '100000csv', '250000.csv',
-         '500000.csv', '750000.csv', '1000000.csv', '2500000.csv', '5000000.csv']
-# DEFAULT_DESCRIPTION = 'CSV dataset generator script demo.'
-# DEFAULT_SAMPLES = 100
+         '500000.csv', '750000.csv', '1000000.csv']
 
-#
-# def parse_args():
-#     parser = argparse.ArgumentParser(description=DEFAULT_DESCRIPTION)
-#
-#     parser.add_argument('output',
-#                         type=str,
-#                         help='output CSV file, e.g. data/output.csv')
-#
-#     parser.add_argument('--samples',
-#                         type=int,
-#                         default=DEFAULT_SAMPLES,
-#                         help='number of samples to generate (default: {})'.format(DEFAULT_SAMPLES))
-#
-#     return parser.parse_args()
-
-
+# To generate only certain dataset or certain quantity of data just exclude not needed files from the list above
 if __name__ == '__main__':
     fake = Faker()
-    # args = parse_args()
-    #
-    # if args.samples < 0:
-    #     raise ValueError('Number of samples must be greater than 0.')
-    #
-    # with open(args.output, 'w') as csvfile:
-    #     spamwriter = csv.writer(csvfile, delimiter=' ',
-    #                             quotechar='|', quoting=csv.QUOTE_MINIMAL)
-    #
-    #     for i in range(args.samples - 1):
-    #         spamwriter.writerow(fake.pystr())
 
     for folder in folders:
         for file, j in zip(files, amount_samples):

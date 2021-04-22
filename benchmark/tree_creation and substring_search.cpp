@@ -21,10 +21,11 @@ string folders[10] = {"/data_1/",
                       "/data_4/", "/data_5/", "/data_6/",
                       "/data_7/", "/data_8/", "/data_9/",
                       "/data_10/"};
-string files[12] = {"2500000.csv", "5000000.csv"};
+string files[12] = {"100.csv", "500.csv", "1000.csv", "5000.csv", "10000.csv", "25000.csv", "50000.csv", "100000csv",
+                    "250000.csv", "500000.csv", "750000.csv", "1000000.csv"};
 
 int main() {
-//  // работа с набором данных
+  // работа с набором данных
   const auto path = string(kDatasetPath);
   string line;
   string data = "";
