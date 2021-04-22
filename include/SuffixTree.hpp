@@ -10,8 +10,8 @@ namespace itis {
   struct SuffixTree{
    public:
       int root, last_added, pos, needSL, remainder, active_node, active_e, active_len;
-      Node tree[MAXN];
-      char text[MAXN];
+      Node* tree = new Node[MAXN];
+      char* text = new char[MAXN];
 
       int new_node(int start, int end = oo) {
         Node nd;
@@ -83,6 +83,10 @@ namespace itis {
             active_node = tree[active_node].slink > 0 ? tree[active_node].slink : root;
         }
       }
+   ~SuffixTree(){
+     delete[] tree;
+     delete[] text;
+   }
 
     // ===== SEARCHING FOR SUBSTRING FUNCTIONS ===== //
 
@@ -100,9 +104,9 @@ namespace itis {
       return 0;  // didnt came to the end of substr, but everything matched for now, go to the next edge
     }
 
-    int doTraversal(Node*n, string str, int idx)
+    int doTraversal(Node *n, string str, int idx)
     {
-      if(n == NULL)
+      if(n == nullptr)
       {
         return -1;
       }
@@ -127,10 +131,10 @@ namespace itis {
     void checkForSubString(string str)
     {
       int res = doTraversal(&tree[root], str, 0);
-      //if(res == 1)
-        //printf("Pattern <%s> is a Substring\n", str.c_str());
-      //else
-        //printf("Pattern <%s> is NOT a Substring\n", str.c_str());
+      if(res == 1)
+        printf("Pattern <%s> is a Substring\n", str.c_str());
+      else
+        printf("Pattern <%s> is NOT a Substring\n", str.c_str());
     }
   }; // SuffixTree
 }  // namespace itis

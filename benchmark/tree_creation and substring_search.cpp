@@ -21,16 +21,15 @@ string folders[10] = {"/data_1/",
                       "/data_4/", "/data_5/", "/data_6/",
                       "/data_7/", "/data_8/", "/data_9/",
                       "/data_10/"};
-string files[12] = {"100.csv", "500.csv", "1000.csv", "5000.csv", "10000csv", "25000.csv", "50000.csv", "100000csv",
-                    "250000.csv", "500000.csv", "750000.csv", "1000000.csv"};
+string files[12] = {"2500000.csv", "5000000.csv"};
 
-int main(int argc, char **argv) {
-  // работа с набором данных
+int main() {
+//  // работа с набором данных
   const auto path = string(kDatasetPath);
   string line;
   string data = "";
-  for (auto folder : folders) {
-    for (auto file : files) {
+  for (auto file : files) {
+    for (auto folder : folders) {
       for (int i = 0; i < 10; ++i) { // 10 раз прогоняем один и тот же csv файл
         auto input_file = ifstream(path + folder + file);
 
@@ -67,9 +66,12 @@ int main(int argc, char **argv) {
         cout << "Time elapsed for creation in " << folder + file + " " << time_elapsed_ns_create << " " <<
             "Time for searching " << time_elapsed_ns_search << "\n";
         data = " ";
+
         delete tree;
+
       }
     }
   }
-  return 0;
+
+
 }

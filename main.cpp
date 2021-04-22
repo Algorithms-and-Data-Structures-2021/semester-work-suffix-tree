@@ -5,7 +5,7 @@ using namespace std;
 using namespace itis;
 
 int main() {
-  SuffixTree* tree = new SuffixTree;
+  auto tree = new SuffixTree;
   tree->st_init();
   string texts = "procedure";
 
@@ -15,7 +15,8 @@ int main() {
   }
 
 
-  tree->checkForSubString("proce");
+  tree->checkForSubString("dure");
+
   delete tree;
   return 0;
 }
