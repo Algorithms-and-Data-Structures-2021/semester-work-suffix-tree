@@ -2,10 +2,6 @@ Suffix Tree
 
 [![CMake](https://github.com/Algorithms-and-Data-Structures-2021/semester-work-suffix-tree/actions/workflows/cmake.yml/badge.svg?branch=main)](https://github.com/Algorithms-and-Data-Structures-2021/semester-work-suffix-tree/actions/workflows/cmake.yml)
 
-**_Измените status badge сверху для отображения статуса сборки вашего проекта._**
-
-`Actions > CMake > ... > Create status badge`
-
 **Описание:**
 - Реализация структуры данных Suffix Tree
 - Suffix Tree - дерево, в котором содержатся  все возможные окончания слова (суффиксы).
