@@ -2,7 +2,7 @@
 #include "SuffixTree.hpp"
 #include "Constants.h"
 
-using std::fmin;
+using namespace std;
 
 namespace itis {
   struct Node {
