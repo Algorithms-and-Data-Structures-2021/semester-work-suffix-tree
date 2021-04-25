@@ -11,7 +11,7 @@ namespace itis {
     int next[ALPHABET_SIZE]; // if there is an edge from node starting with certain ASCII letter
 
     int edge_length(int pos) {
-      return fmin(end, pos + 1) - start;
+      return min(end, pos + 1) - start;
     }
   };
 }
