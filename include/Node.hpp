@@ -1,7 +1,7 @@
 #pragma once
 #include "SuffixTree.hpp"
 #include "Constants.h"
-#include <math.h>
+#include <algorithm>
 
 using namespace std;
 

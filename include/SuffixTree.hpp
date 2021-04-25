@@ -15,8 +15,8 @@ namespace itis {
           remainder, // how many nodes we need to lengthen
           active_node, active_e, active_len;
 
-      Node* tree = new Node[MAXN];
-      char* text = new char[MAXN];
+      Node tree[MAXN];
+      char text[MAXN];
 
       int new_node(int start, int end = oo) {
         Node nd;
@@ -97,11 +97,6 @@ namespace itis {
             active_node = tree[active_node].slink > 0 ? tree[active_node].slink : root;
         }
       }
-
-   ~SuffixTree(){
-     delete[] tree;
-     delete[] text;
-   }
 
     // ===== SEARCHING FOR SUBSTRING FUNCTIONS ===== //
 
