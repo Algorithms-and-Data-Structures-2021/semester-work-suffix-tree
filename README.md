@@ -71,8 +71,7 @@ cd dataset
 python generate_csv_bench_dataset.py
 ```
 
-Тестовые данные представлены в CSV формате (см.
-[`dataset/data/dataset-example.csv`](dataset/data/dataset-example.csv)):
+Тестовые данные представлены в CSV формате:
 
 ```csv
 dlfjLIAIDJPOIFAJFPDikfjfhosijdffPDO:SIFJiojdfhshfuykglfidhgjjJFDSJFjGLKSHFGJKLHLlfgnjlgkfdjglfdgmfdmgmfdgnn
