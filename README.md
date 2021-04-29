@@ -1,4 +1,4 @@
-Suffix Tree
+# Suffix Tree
 
 [![CMake](https://github.com/Algorithms-and-Data-Structures-2021/semester-work-suffix-tree/actions/workflows/cmake.yml/badge.svg?branch=main)](https://github.com/Algorithms-and-Data-Structures-2021/semester-work-suffix-tree/actions/workflows/cmake.yml)
 
@@ -100,8 +100,8 @@ https://drive.google.com/drive/folders/1x077qM8-G67RCv5ttBIrWhTWbdTZjf-p - го�
 3. Запустить функцию main. Все замеры будут выводиться в консоль.
 
 ## Источники
-https://www.youtube.com/watch?v=qh2leThTv0Y&list=WL&index=29 - короткое видео с визуализацией построения дерева.
-https://www.youtube.com/watch?v=LNBs3xZMGLc - лекция с ИТМО (не лучшая лекция, но какие то концепты понять поможет)
-https://stackoverflow.com/questions/9452701/ukkonens-suffix-tree-algorithm-in-plain-english - лучшее подробное объяснение алгоритма на чистом английском
-https://www.geeksforgeeks.org/generalized-suffix-tree-1/ - различные примеры использования, теория
-http://brenden.github.io/ukkonen-animation/ - хороший сайт с визуализацией
+- [Короткое видео с визуализацией построения дерева](https://www.youtube.com/watch?v=qh2leThTv0Y&list=WL&index=29)
+- [Лекция с ИТМО (не лучшая лекция, но какие то концепты понять поможет)](https://www.youtube.com/watch?v=LNBs3xZMGLc)
+- https://stackoverflow.com/questions/9452701/ukkonens-suffix-tree-algorithm-in-plain-english - лучшее подробное объяснение алгоритма на чистом английском
+- https://www.geeksforgeeks.org/generalized-suffix-tree-1/ - различные примеры использования, теория
+- http://brenden.github.io/ukkonen-animation/ - хороший сайт с визуализацией
