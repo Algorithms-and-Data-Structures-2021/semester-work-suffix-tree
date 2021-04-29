@@ -2,19 +2,20 @@
 #include <iostream>
 #include <string>
 #include "Node.hpp"
-#include "Constants.h"
-
-using namespace std;
+#include "Constants.hpp"
 
 namespace itis {
   struct SuffixTree{
    public:
-      int root, last_added,
-          pos, // position at text
-          needSL, // current node that needs suffix link
-          remainder, // how many nodes we need to lengthen
-          active_node, active_e, active_len;
-
+      int root;
+      int last_added;
+      int pos; // position at text
+      int needSL; // current node that needs suffix link
+      int remainder; // how many nodes we need to lengthen
+      int active_node;
+      int active_e;
+      int active_len;
+      // Didn't make it as a dynamic array because it didnt change any functionality, 8gb memory required anyway
       Node tree[MAXN];
       char text[MAXN];
 
@@ -100,7 +101,7 @@ namespace itis {
 
     // ===== SEARCHING FOR SUBSTRING FUNCTIONS ===== //
 
-    int traverseEdge(string str, int idx, int start, int end)
+    int traverseEdge(std::string str, int idx, int start, int end)
     {
       int k = 0;
       for(k=start; k<end && str[idx] != '\0'; k++, idx++)
@@ -113,7 +114,7 @@ namespace itis {
       return 0;  // didnt came to the end of substr, but everything matched for now, go to the next edge
     }
 
-    int doTraversal(Node *n, string str, int idx)
+    int doTraversal(Node *n, std::string str, int idx)
     {
       if(n == nullptr)
       {
@@ -137,7 +138,7 @@ namespace itis {
         return -1;  // no such edge, no match
     }
 
-    void checkForSubString(string str)
+    void checkForSubString(std::string str)
     {
       int res = doTraversal(&tree[root], str, 0);
       if(res == 1)
